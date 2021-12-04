@@ -1,25 +1,34 @@
 import { useEffect, useState } from "react";
 import {supabase} from "../supabaseClient.js";
 
-const PAGE_LIMIT = 10;
+const PAGE_LIMIT = 20;
 
-export default function () {
+export default function Players () {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
+    const [page, setPage] = useState(0);
 
     async function getUsers() {
+        setLoading(true);
         const { data, error } = await supabase.from("users")
             .select()
             .order('kills', { ascending: false })
-            .limit(PAGE_LIMIT);
-        setUsers(() => data);
+            .range(page*PAGE_LIMIT, page*PAGE_LIMIT+PAGE_LIMIT-1)
+        if (error) throw error
+        setLoading(false);
+        setUsers(data);
     }
 
     useEffect(() => {
-        setLoading(true);
         getUsers();
-        setLoading(false);
-    }, []);
+    }, [page]);
+
+    const nextPage = () => {
+        setPage(page+1);
+    }
+    const previousPage = () => {
+        setPage(page-1);
+    }
 
     return (
         <>
@@ -29,6 +38,7 @@ export default function () {
             ) : (
                 <>
                     {users?.length ? (
+                        <>
                         <table>
                             <thead>
                                 <tr>
@@ -49,6 +59,9 @@ export default function () {
                             ))}
                             </tbody>
                         </table>
+                            {page > 0 && <button onClick={previousPage}>Previous</button>}
+                            {users?.length === PAGE_LIMIT && <button onClick={nextPage}>Next</button>}
+                        </>
                     ) : (
                         <p>No users currently</p>
                     )}
