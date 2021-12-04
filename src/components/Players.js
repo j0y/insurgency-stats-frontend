@@ -6,7 +6,10 @@ export default function () {
     const [users, setUsers] = useState([]);
 
     async function getUsers() {
-        const { data, error } = await supabase.from("users").select().limit(10);
+        const { data, error } = await supabase.from("users")
+            .select()
+            .order('kills', { ascending: false })
+            .limit(10);
         setUsers(() => data);
     }
 
@@ -26,15 +29,17 @@ export default function () {
                     {users?.length ? (
                         <table>
                             <thead>
-                                <td>{'User'}</td>
-                                <td>{'kills'}</td>
-                                <td>{'deaths'}</td>
-                                <td>{'kd'}</td>
+                                <tr>
+                                    <th>{'User'}</th>
+                                    <th>{'kills'}</th>
+                                    <th>{'deaths'}</th>
+                                    <th>{'kd'}</th>
+                                </tr>
                             </thead>
                             <tbody>
                             {users.map((user) => (
-                                <tr>
-                                    <td>{user.id}</td>
+                                <tr key={user.id}>
+                                    <td>{user.name}</td>
                                     <td>{user.kills}</td>
                                     <td>{user.deaths}</td>
                                     <td>{user.kd}</td>
