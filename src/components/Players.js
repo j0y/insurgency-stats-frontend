@@ -11,7 +11,7 @@ export default function Players () {
     async function getUsers() {
         setLoading(true);
         const { data, error } = await supabase.from("users")
-            .select()
+            .select(`id, name, kills, deaths, kd`)
             .order('kills', { ascending: false })
             .range(page*PAGE_LIMIT, page*PAGE_LIMIT+PAGE_LIMIT-1)
         if (error) throw error
