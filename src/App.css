@@ -1,3 +1,17 @@
 .App {
   text-align: center;
 }
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+}
+.left {
+  text-align: left;
+}
+tr {
+  border-bottom: #bababa 1px solid;
+}
+td, th {
+  padding: 0.2em 1em;
+}

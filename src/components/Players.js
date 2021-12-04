@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import {supabase} from "../supabaseClient.js";
 
+const PAGE_LIMIT = 10;
+
 export default function () {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
@@ -9,7 +11,7 @@ export default function () {
         const { data, error } = await supabase.from("users")
             .select()
             .order('kills', { ascending: false })
-            .limit(10);
+            .limit(PAGE_LIMIT);
         setUsers(() => data);
     }
 
@@ -30,7 +32,7 @@ export default function () {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>{'User'}</th>
+                                    <th className="left">{'User'}</th>
                                     <th>{'kills'}</th>
                                     <th>{'deaths'}</th>
                                     <th>{'kd'}</th>
@@ -39,7 +41,7 @@ export default function () {
                             <tbody>
                             {users.map((user) => (
                                 <tr key={user.id}>
-                                    <td>{user.name}</td>
+                                    <td className="left">{user.name}</td>
                                     <td>{user.kills}</td>
                                     <td>{user.deaths}</td>
                                     <td>{user.kd}</td>
