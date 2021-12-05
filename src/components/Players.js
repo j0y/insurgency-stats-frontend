@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
+import {Link,} from "react-router-dom";
 
 const PAGE_LIMIT = 20;
 
-export default function Players () {
+export default function Players() {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(0);
 
     async function getUsers() {
         setLoading(true);
-        const { data, error } = await supabase.from("users")
+        const {data, error} = await supabase.from("users")
             .select(`id, name, kills, deaths, kd`)
-            .order('kills', { ascending: false })
-            .range(page*PAGE_LIMIT, page*PAGE_LIMIT+PAGE_LIMIT-1)
+            .order('kills', {ascending: false})
+            .range(page * PAGE_LIMIT, page * PAGE_LIMIT + PAGE_LIMIT - 1)
         if (error) throw error
         setLoading(false);
         setUsers(data);
@@ -24,10 +25,10 @@ export default function Players () {
     }, [page]);
 
     const nextPage = () => {
-        setPage(page+1);
+        setPage(page + 1);
     }
     const previousPage = () => {
-        setPage(page-1);
+        setPage(page - 1);
     }
 
     return (
@@ -39,26 +40,32 @@ export default function Players () {
                 <>
                     {users?.length ? (
                         <>
-                        <table>
-                            <thead>
+                            <table>
+                                <thead>
                                 <tr>
                                     <th className="left">{'User'}</th>
                                     <th>{'kills'}</th>
                                     <th>{'deaths'}</th>
                                     <th>{'kd'}</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                            {users.map((user) => (
-                                <tr key={user.id}>
-                                    <td className="left">{user.name}</td>
-                                    <td>{user.kills}</td>
-                                    <td>{user.deaths}</td>
-                                    <td>{user.kd}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {users.map((user) => (
+                                    <tr key={user.id}>
+                                        <td className="left">
+                                            <Link
+                                                to={`/user/${user.id}`}
+                                            >
+                                                {user.name}
+                                            </Link>
+                                        </td>
+                                        <td>{user.kills}</td>
+                                        <td>{user.deaths}</td>
+                                        <td>{user.kd}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
                             {page > 0 && <button onClick={previousPage}>Previous</button>}
                             {users?.length === PAGE_LIMIT && <button onClick={nextPage}>Next</button>}
                         </>
