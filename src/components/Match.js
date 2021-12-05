@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
 import {Link, useParams} from "react-router-dom";
 import formatDate from "../helpers/date"
+import WeaponsStatsTable from "./WeaponsStatsTable";
 
 export default function Match() {
     const [loading, setLoading] = useState(true);
@@ -113,24 +114,7 @@ export default function Match() {
                                         </tr>
                                         <tr className={detailsOpen === user.user_id ? '' : ' hidden'}>
                                             <td colSpan={4}>
-                                                <table>
-                                                    <thead>
-                                                    <tr>
-                                                        <th className="left">{'weapon'}</th>
-                                                        <th>{'kills'}</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {Object.keys(user.weapon_stats).map((weapon, i) => (
-                                                        <tr key={weapon}>
-                                                            <td className="left">
-                                                                {weapon}
-                                                            </td>
-                                                            <td>{user.weapon_stats[weapon]}</td>
-                                                        </tr>
-                                                    ))}
-                                                    </tbody>
-                                                </table>
+                                                <WeaponsStatsTable weaponStats={user.weapon_stats} />
                                             </td>
                                         </tr>
                                     </>

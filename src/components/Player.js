@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
 import {Link, useParams} from "react-router-dom";
+import WeaponsStatsTable from "./WeaponsStatsTable";
 
 export default function Player() {
     const [loading, setLoading] = useState(true);
@@ -63,24 +64,7 @@ export default function Player() {
                     </table>
 
                     <h2>Weapon stats</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th className="left">{'weapon'}</th>
-                            <th>{'kills'}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {Object.keys(user.all_weapon_stats).map((weapon, i) => (
-                            <tr key={weapon}>
-                                <td className="left">
-                                    {weapon}
-                                </td>
-                                <td>{user.all_weapon_stats[weapon]}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
+                    <WeaponsStatsTable weaponStats={user.all_weapon_stats}/>
                 </>
             )}
         </>
