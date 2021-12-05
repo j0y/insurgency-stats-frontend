@@ -1,27 +1,28 @@
 import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
-import {Link,} from "react-router-dom";
+import {Link} from "react-router-dom";
+import formatDate from "../helpers/date"
 
-const PAGE_LIMIT = 20;
+const PAGE_LIMIT = 10;
 
-export default function Players() {
+export default function Matches() {
     const [loading, setLoading] = useState(true);
-    const [users, setUsers] = useState([]);
+    const [matches, setMatches] = useState([]);
     const [page, setPage] = useState(0);
 
-    async function getUsers() {
+    async function getMatches() {
         setLoading(true);
-        const {data, error} = await supabase.from("users")
-            .select(`id, name, kills, deaths, kd`)
-            .order('kills', {ascending: false})
+        const {data, error} = await supabase.from("matches")
+            .select(`id, started_at, map, won`)
+            .order('started_at', {ascending: false})
             .range(page * PAGE_LIMIT, page * PAGE_LIMIT + PAGE_LIMIT - 1)
         if (error) throw error
         setLoading(false);
-        setUsers(data);
+        setMatches(data);
     }
 
     useEffect(() => {
-        getUsers();
+        getMatches();
     }, [page]);
 
     const nextPage = () => {
@@ -33,44 +34,42 @@ export default function Players() {
 
     return (
         <>
-            <h2>Users</h2>
+            <h2>Matches</h2>
             {loading ? (
                 <p>loading...</p>
             ) : (
                 <>
-                    {users?.length ? (
+                    {matches?.length ? (
                         <>
                             <table>
                                 <thead>
                                 <tr>
-                                    <th className="left">{'User'}</th>
-                                    <th>{'kills'}</th>
-                                    <th>{'deaths'}</th>
-                                    <th>{'kd'}</th>
+                                    <th className="left">{'Map'}</th>
+                                    <th>{'started'}</th>
+                                    <th>{'won'}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {users.map((user) => (
-                                    <tr key={user.id}>
+                                {matches.map((match) => (
+                                    <tr key={match.id}>
                                         <td className="left">
                                             <Link
-                                                to={`/user/${user.id}`}
+                                                to={`/match/${match.id}`}
                                             >
-                                                {user.name}
+                                                {match.map}
                                             </Link>
                                         </td>
-                                        <td>{user.kills}</td>
-                                        <td>{user.deaths}</td>
-                                        <td>{user.kd}</td>
+                                        <td>{formatDate(match.started_at)}</td>
+                                        <td>{match.won ? '✓' : ''}</td>
                                     </tr>
                                 ))}
                                 </tbody>
                             </table>
-                            {page > 0 && <button onClick={previousPage}>{'< Previous'}</button>}
-                            {users?.length === PAGE_LIMIT && <button onClick={nextPage}>{'Next >'}</button>}
+                            {page > 0 && <button onClick={previousPage}>Previous</button>}
+                            {matches?.length === PAGE_LIMIT && <button onClick={nextPage}>Next</button>}
                         </>
                     ) : (
-                        <p>No users currently</p>
+                        <p>No matches currently</p>
                     )}
                 </>
             )}
