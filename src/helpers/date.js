@@ -1,6 +1,6 @@
 function formatDate(unixTimestamp) {
-    const date = new Date(unixTimestamp * 1000);
-
+    const offset = -new Date().getTimezoneOffset() * 1000 * 60
+    const date = new Date((unixTimestamp * 1000) + offset);
     let hours = "0" + date.getHours();
     let minutes = "0" + date.getMinutes();
     let seconds = "0" + date.getSeconds();
