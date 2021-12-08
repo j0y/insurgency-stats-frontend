@@ -3,6 +3,7 @@ import {supabase} from "../supabaseClient.js";
 import {Link, useParams} from "react-router-dom";
 import WeaponsStatsTable from "./WeaponsStatsTable";
 import PlayerMatches from "./PlayerMatches";
+import avatarURL from "../helpers/avatarURL";
 
 export default function Player() {
     const [loading, setLoading] = useState(true);
@@ -48,6 +49,7 @@ export default function Player() {
                     <table>
                         <thead>
                         <tr>
+                            <th />
                             <th className="left">{'User'}</th>
                             <th>{'kills'}</th>
                             <th>{'deaths'}</th>
@@ -56,6 +58,7 @@ export default function Player() {
                         </thead>
                         <tbody>
                         <tr key={user.id}>
+                            <td><img src={avatarURL(user.avatar_hash)} alt={user.name} /></td>
                             <td className="left">{user.name}</td>
                             <td>{user.kills}</td>
                             <td>{user.deaths}</td>

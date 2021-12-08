@@ -3,6 +3,7 @@ import {supabase} from "../supabaseClient.js";
 import {Link, useParams} from "react-router-dom";
 import formatDate from "../helpers/date"
 import WeaponsStatsTable from "./WeaponsStatsTable";
+import avatarURL from "../helpers/avatarURL";
 
 export default function Match() {
     const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ export default function Match() {
     async function getUserStats() {
         setLoadingStats(true);
         const {data, error} = await supabase.from("match_user_stats")
-            .select(`user_id, users (name), kills, deaths, weapon_stats`)
+            .select(`user_id, users (name, avatar_hash), kills, deaths, weapon_stats`)
             .order('kills', {ascending: false})
             .eq('match_id', id)
         if (error) throw error
@@ -91,6 +92,7 @@ export default function Match() {
                             <table>
                                 <thead>
                                 <tr>
+                                    <th />
                                     <th className="left">{'Player'}</th>
                                     <th>{'kills'}</th>
                                     <th>{'deaths'}</th>
@@ -101,6 +103,7 @@ export default function Match() {
                                 {userStats.map((user) => (
                                     <>
                                         <tr key={user.user_id}>
+                                            <td><img src={avatarURL(user.users.avatar_hash)} alt={user.name} /></td>
                                             <td className="left">
                                                 <Link
                                                     to={`/user/${user.user_id}`}

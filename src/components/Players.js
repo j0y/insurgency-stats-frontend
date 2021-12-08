@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
 import {Link,} from "react-router-dom";
+import avatarURL from "../helpers/avatarURL";
 
 const PAGE_LIMIT = 20;
 
@@ -12,7 +13,7 @@ export default function Players() {
     async function getUsers() {
         setLoading(true);
         const {data, error} = await supabase.from("users")
-            .select(`id, name, kills, deaths, kd`)
+            .select(`id, name, kills, deaths, kd, avatar_hash`)
             .order('kills', {ascending: false})
             .range(page * PAGE_LIMIT, page * PAGE_LIMIT + PAGE_LIMIT - 1)
         if (error) throw error
@@ -43,6 +44,7 @@ export default function Players() {
                             <table>
                                 <thead>
                                 <tr>
+                                    <th />
                                     <th className="left">{'User'}</th>
                                     <th>{'kills'}</th>
                                     <th>{'deaths'}</th>
@@ -52,6 +54,7 @@ export default function Players() {
                                 <tbody>
                                 {users.map((user) => (
                                     <tr key={user.id}>
+                                        <td><img src={avatarURL(user.avatar_hash)} alt={user.name} /></td>
                                         <td className="left">
                                             <Link
                                                 to={`/user/${user.id}`}
