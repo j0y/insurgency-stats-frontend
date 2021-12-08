@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
 import {Link, useParams} from "react-router-dom";
 import WeaponsStatsTable from "./WeaponsStatsTable";
+import PlayerMatches from "./PlayerMatches";
 
 export default function Player() {
     const [loading, setLoading] = useState(true);
@@ -65,6 +66,8 @@ export default function Player() {
 
                     <h2>Weapon stats</h2>
                     <WeaponsStatsTable weaponStats={user.all_weapon_stats}/>
+                    <h2>Matches</h2>
+                    <PlayerMatches id={user.id} />
                 </>
             )}
         </>

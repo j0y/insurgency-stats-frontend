@@ -65,8 +65,8 @@ export default function Matches() {
                                 ))}
                                 </tbody>
                             </table>
-                            {page > 0 && <button onClick={previousPage}>Previous</button>}
-                            {matches?.length === PAGE_LIMIT && <button onClick={nextPage}>Next</button>}
+                            {page > 0 && <button onClick={previousPage}>{'< Previous'}</button>}
+                            {matches?.length === PAGE_LIMIT && <button onClick={nextPage}>{'Next >'}</button>}
                         </>
                     ) : (
                         <p>No matches currently</p>
