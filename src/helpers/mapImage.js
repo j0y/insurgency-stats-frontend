@@ -7,6 +7,8 @@ function mapImage(map) {
             return prefix + 'ministry.jpg'
         case 'italy_coop':
             return prefix + 'italy.jpg'
+        case 'siege_coop':
+            return prefix + 'siege.jpg'
         default:
             return prefix + 'default.png'
     }
