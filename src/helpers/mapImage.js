@@ -9,6 +9,10 @@ function mapImage(map) {
             return prefix + 'italy.jpg'
         case 'siege_coop':
             return prefix + 'siege.jpg'
+        case 'dedust1p2_aof':
+            return prefix + 'de_dust.jpg'
+        case 'crossbow':
+            return prefix + 'crossbow.jpg'
         default:
             return prefix + 'default.png'
     }
