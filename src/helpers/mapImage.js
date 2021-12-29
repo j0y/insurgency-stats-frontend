@@ -19,6 +19,12 @@ function mapImage(map) {
             return prefix + 'iron_express.jpg'
         case 'karkand_redux_p2':
             return prefix + 'karkand.jpg'
+        case 'dry_canal_coop_v4':
+            return prefix + 'dry_canal.jpg'
+        case 'launch_control_coop_ws':
+            return prefix + 'launch.jpg'
+        case 'market_open_coop':
+            return prefix + 'market_open.jpg'
         default:
             return prefix + 'default.png'
     }
