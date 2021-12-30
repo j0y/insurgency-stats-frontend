@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import WeaponsStatsTable from "./WeaponsStatsTable";
 import PlayerMatches from "./PlayerMatches";
 import avatarURL from "../helpers/avatarURL";
+import PlayerMedals from "./PlayerMedals";
 
 export default function Player() {
     const [loading, setLoading] = useState(true);
@@ -67,6 +68,8 @@ export default function Player() {
                         </tbody>
                     </table>
 
+                    <h2>Medals</h2>
+                    <PlayerMedals id={user.id} />
                     <h2>Weapon stats</h2>
                     <WeaponsStatsTable weaponStats={user.all_weapon_stats}/>
                     <h2>Matches</h2>

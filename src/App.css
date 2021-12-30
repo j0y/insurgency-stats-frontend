@@ -21,3 +21,79 @@ td, th {
 .hidden {
   display: none;
 }
+
+.medals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.medal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+.medal {
+  width: 100px;
+  height: 100px;
+  background-image: url(./medals/default.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.medal-1 {
+  background-image: url(./medals/1.png);
+}
+.medal-2 {
+  background-image: url(./medals/2.png);
+}
+.medal-3 {
+  background-image: url(./medals/3.png);
+}
+.medal-4 {
+  background-image: url(./medals/4.png);
+}
+.medal-5 {
+  background-image: url(./medals/5.png);
+}
+.medal-6 {
+  background-image: url(./medals/6.png);
+}
+.medal-7 {
+  background-image: url(./medals/7.png);
+}
+.medal-8 {
+  background-image: url(./medals/8.png);
+}
+.medal-9 {
+  background-image: url(./medals/9.png);
+}
+.medal-10 {
+  background-image: url(./medals/10.png);
+}
+.medal-11 {
+  background-image: url(./medals/11.png);
+}
+.medal-12 {
+  background-image: url(./medals/12.png);
+}
+.medal-13 {
+  background-image: url(./medals/13.png);
+}
+.medal-14 {
+  background-image: url(./medals/14.png);
+}
+.medal-15 {
+  background-image: url(./medals/15.png);
+}
+.medal-16 {
+  background-image: url(./medals/16.png);
+}
+.medal-17 {
+  background-image: url(./medals/17.png);
+}
+.medal-18 {
+  background-image: url(./medals/18.png);
+}
