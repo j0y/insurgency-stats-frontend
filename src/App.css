@@ -38,62 +38,110 @@ td, th {
 .medal {
   width: 100px;
   height: 100px;
-  background-image: url(./medals/default.png);
+  background-image: url(./img/medals/default.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .medal-1 {
-  background-image: url(./medals/1.png);
+  background-image: url(./img/medals/1.png);
 }
 .medal-2 {
-  background-image: url(./medals/2.png);
+  background-image: url(./img/medals/2.png);
 }
 .medal-3 {
-  background-image: url(./medals/3.png);
+  background-image: url(./img/medals/3.png);
 }
 .medal-4 {
-  background-image: url(./medals/4.png);
+  background-image: url(./img/medals/4.png);
 }
 .medal-5 {
-  background-image: url(./medals/5.png);
+  background-image: url(./img/medals/5.png);
 }
 .medal-6 {
-  background-image: url(./medals/6.png);
+  background-image: url(./img/medals/6.png);
 }
 .medal-7 {
-  background-image: url(./medals/7.png);
+  background-image: url(./img/medals/7.png);
 }
 .medal-8 {
-  background-image: url(./medals/8.png);
+  background-image: url(./img/medals/8.png);
 }
 .medal-9 {
-  background-image: url(./medals/9.png);
+  background-image: url(./img/medals/9.png);
 }
 .medal-10 {
-  background-image: url(./medals/10.png);
+  background-image: url(./img/medals/10.png);
 }
 .medal-11 {
-  background-image: url(./medals/11.png);
+  background-image: url(./img/medals/11.png);
 }
 .medal-12 {
-  background-image: url(./medals/12.png);
+  background-image: url(./img/medals/12.png);
 }
 .medal-13 {
-  background-image: url(./medals/13.png);
+  background-image: url(./img/medals/13.png);
 }
 .medal-14 {
-  background-image: url(./medals/14.png);
+  background-image: url(./img/medals/14.png);
 }
 .medal-15 {
-  background-image: url(./medals/15.png);
+  background-image: url(./img/medals/15.png);
 }
 .medal-16 {
-  background-image: url(./medals/16.png);
+  background-image: url(./img/medals/16.png);
 }
 .medal-17 {
-  background-image: url(./medals/17.png);
+  background-image: url(./img/medals/17.png);
 }
 .medal-18 {
-  background-image: url(./medals/18.png);
+  background-image: url(./img/medals/18.png);
+}
+
+/* convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img/maps/%[filename:base].jpg" */
+.map {
+  width: 100px;
+  height: 56px;
+  background-image: url(./img/maps/default.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.map-ministry_coop {
+  background-image: url(./img/maps/ministry.jpg);
+}
+.map-ministry_open_coop {
+  background-image: url(./img/maps/ministry.jpg);
+}
+.map-italy_coop {
+  background-image: url(./img/maps/italy.jpg);
+}
+.map-siege_coop {
+  background-image: url(./img/maps/siege.jpg);
+}
+.map-dedust1p2_aof {
+  background-image: url(./img/maps/de_dust.jpg);
+}
+.map-crossbow {
+  background-image: url(./img/maps/crossbow.jpg);
+}
+.map-depot_coop {
+  background-image: url(./img/maps/depot.jpg);
+}
+.map-iron_express {
+  background-image: url(./img/maps/iron_express.jpg);
+}
+.map-karkand_redux_p2 {
+  background-image: url(./img/maps/karkand.jpg);
+}
+.map-dry_canal_coop_v4 {
+  background-image: url(./img/maps/dry_canal.jpg);
+}
+.map-drycanal_coop {
+  background-image: url(./img/maps/dry_canal.jpg);
+}
+.map-launch_control_coop_ws {
+  background-image: url(./img/maps/launch.jpg);
+}
+.map-market_open_coop {
+  background-image: url(./img/maps/market_open.jpg);
 }

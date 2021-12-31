@@ -14,7 +14,7 @@ const medal_descriptions = {
     10: "Kill 5000 enemies with a rifle",
     11: "Kill 1000 enemies with explosives",
     12: "Win map alone",
-    13: "Don't die",
+    13: "Complete map without dying",
     14: "6 months",
     15: "1 year",
     16: "2 years",
@@ -61,7 +61,7 @@ export default function PlayerMedals({id}) {
                             <div>
                                 {medal_descriptions[medal.medal_id]}
                                 {medal.medal_id === 13 && (
-                                    <span> ({medal.value} kills without death)</span>
+                                    <span> ({medal.value} kills)</span>
                                 )}
                             </div>
                         </div>

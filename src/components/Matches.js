@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
 import {Link} from "react-router-dom";
 import formatDate from "../helpers/date"
-import mapImage from "../helpers/mapImage";
 
 const PAGE_LIMIT = 10;
 
@@ -55,7 +54,7 @@ export default function Matches() {
                                 {matches.map((match) => (
                                     <tr key={match.id}>
                                         <td>
-                                            <img src={mapImage(match.map)} alt={match.map}/>
+                                            <div className={`map map-${match.map}`} />
                                         </td>
                                         <td className="left">
                                             <Link
