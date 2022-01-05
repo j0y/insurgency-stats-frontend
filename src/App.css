@@ -98,7 +98,9 @@ td, th {
   background-image: url(./img/medals/18.png);
 }
 
-/* convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img/maps/%[filename:base].jpg" */
+/*
+convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img/maps/%[filename:base].jpg"
+*/
 .map {
   width: 100px;
   height: 56px;
@@ -144,4 +146,10 @@ td, th {
 }
 .map-market_open_coop {
   background-image: url(./img/maps/market_open.jpg);
+}
+.map-de_breach_d {
+  background-image: url(./img/maps/de_breach_d.jpg);
+}
+.map-verticality_coop {
+  background-image: url(./img/maps/verticality.jpg);
 }
