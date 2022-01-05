@@ -12,10 +12,10 @@ export default function PlayerMatches({id}) {
 
     async function getUserMatches() {
         setLoading(true);
-        const {data, error} = await supabase.from("match_user_stats")
-            .select(`matches (id, map, started_at, won)`)
-            .order('started_at', {ascending: false, foreignTable: 'matches'})
-            .eq('user_id', id)
+        const {data, error} = await supabase.from("matches")
+            .select(`id, map, started_at, won, match_user_stats!inner(user_id)`)
+            .order('started_at', {ascending: false})
+            .eq('match_user_stats.user_id', id)
             .range(page * PAGE_LIMIT, page * PAGE_LIMIT + PAGE_LIMIT - 1)
         if (error) throw error
         setLoading(false);
@@ -59,19 +59,19 @@ export default function PlayerMatches({id}) {
                         </thead>
                         <tbody>
                         {userMatches.map((match) => (
-                            <tr key={match.matches.id}>
+                            <tr key={match.id}>
                                 <td>
-                                    <div className={`map map-${match.matches.map}`} />
+                                    <div className={`map map-${match.map}`} />
                                 </td>
                                 <td className="left">
                                     <Link
-                                        to={`/match/${match.matches.id}`}
+                                        to={`/match/${match.id}`}
                                     >
-                                        {match.matches.map}
+                                        {match.map}
                                     </Link>
                                 </td>
-                                <td>{formatDate(match.matches.started_at)}</td>
-                                <td>{match.matches.won ? '✓' : ''}</td>
+                                <td>{formatDate(match.started_at)}</td>
+                                <td>{match.won ? '✓' : ''}</td>
                             </tr>
                         ))}
                         </tbody>
