@@ -136,7 +136,7 @@ convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img
   background-image: url(./img/maps/karkand.jpg);
 }
 .map-dry_canal_coop_v4 {
-  background-image: url(./img/maps/dry_canal.jpg);
+  background-image: url(./img/maps/dry_canal_coop_v4.jpg);
 }
 .map-drycanal_coop {
   background-image: url(./img/maps/dry_canal.jpg);
@@ -152,4 +152,16 @@ convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img
 }
 .map-verticality_coop {
   background-image: url(./img/maps/verticality.jpg);
+}
+.map-tell_coop {
+  background-image: url(./img/maps/tell.jpg);
+}
+.map-winter_rescue_ws {
+  background-image: url(./img/maps/winter.jpg);
+}
+.map-baghdad_b5 {
+  background-image: url(./img/maps/bahgdad.jpg);
+}
+.map-heights_coop {
+  background-image: url(./img/maps/heights.jpg);
 }
