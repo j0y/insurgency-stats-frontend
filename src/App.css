@@ -165,3 +165,6 @@ convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img
 .map-heights_coop {
   background-image: url(./img/maps/heights.jpg);
 }
+.map-szepezd_redux_coop {
+ background-image: url(./img/maps/spezd.jpg);
+}
