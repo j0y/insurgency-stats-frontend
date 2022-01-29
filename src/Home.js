@@ -1,13 +1,11 @@
 import './App.css';
-import Players from "./components/Players";
-import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
-import Player from "./components/Player";
 import Matches from "./components/Matches";
+import PlayerSearch from "./components/PlayerSearch";
 
 function Home() {
     return (
         <>
-            <Players />
+            <PlayerSearch />
             <Matches />
         </>
     );
