@@ -60,7 +60,7 @@ export default function Match() {
             <Link
                 to={`/`}
             >
-                <h2>Back to leaderboard</h2>
+                <h2>Back to home page</h2>
             </Link>
 
             {loading ? (

@@ -168,3 +168,6 @@ convert "images_sources/*" -set filename:base "%[basename]" -resize 200 "src/img
 .map-szepezd_redux_coop {
  background-image: url(./img/maps/spezd.jpg);
 }
+.map-gizab_b1_coop {
+  background-image: url(./img/maps/gizab_b1.jpg);
+}
