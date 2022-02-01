@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {supabase} from "../supabaseClient.js";
 import {Link} from "react-router-dom";
 import formatDate from "../helpers/date"
+import LoadingIcon from "./LoadingIcon";
 
 const PAGE_LIMIT = 10;
 
@@ -32,11 +33,33 @@ export default function Matches() {
         setPage(page - 1);
     }
 
+    const placeholder = [...Array(PAGE_LIMIT)].map((e, i) =>
+        <tr>
+            <td>
+                <div className={`map`}/>
+            </td>
+            <td className="placeholder" />
+            <td className="placeholder" />
+            <td/>
+        </tr>)
+
     return (
         <>
-            <h2>Matches</h2>
+            <h2>Matches {loading && <LoadingIcon />}</h2>
             {loading ? (
-                <p>loading...</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th/>
+                        <th className="left">{'Map'}</th>
+                        <th>{'started'}</th>
+                        <th>{'won'}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {placeholder}
+                    </tbody>
+                </table>
             ) : (
                 <>
                     {matches?.length ? (
@@ -54,7 +77,7 @@ export default function Matches() {
                                 {matches.map((match) => (
                                     <tr key={match.id}>
                                         <td>
-                                            <div className={`map map-${match.map}`} />
+                                            <div className={`map map-${match.map}`}/>
                                         </td>
                                         <td className="left">
                                             <Link

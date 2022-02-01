@@ -6,14 +6,14 @@ import {Link} from "react-router-dom";
 function Home() {
     return (
         <>
-            <PlayerSearch />
             <Matches />
+            <PlayerSearch />
             <br /><br />
             <div>
                 <Link
                     to={`/all_stats`}
                 >
-                    {'All stats'}
+                    {'All users'}
                 </Link>
             </div>
         </>

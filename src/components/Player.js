@@ -70,9 +70,10 @@ export default function Player() {
 
                     <h2>Medals</h2>
                     <PlayerMedals id={user.id} />
+
                     <h2>Weapon stats</h2>
                     <WeaponsStatsTable weaponStats={user.all_weapon_stats}/>
-                    <h2>Matches</h2>
+
                     <PlayerMatches id={user.id} />
                 </>
             )}
